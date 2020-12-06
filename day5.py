@@ -2,6 +2,11 @@ import operator
 from functools import reduce
 
 
+# just convert to binary number
+def alternate(seat_info):
+    return int('1010101', 2)
+
+
 def get_column_number(column_info):
     high = 7
     low = 0
