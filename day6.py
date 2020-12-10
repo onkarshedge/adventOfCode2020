@@ -1,5 +1,8 @@
 from collections import Counter
 from functools import reduce
+from typing import List
+
+from common import cat
 
 
 def solve_part_1(data):
@@ -50,3 +53,19 @@ if __name__ == '__main__':
         print(result)
         result = solve_part_2(data)
         print(result)
+
+# Other's solution
+# ----------------------------------------------------------------------
+
+# assert in6[1] == ['arke', 'qzr', 'plmgnr', 'uriq'] # A group is a list of strs
+
+def day6_1(groups):
+    "For each group, compute the number of letters that ANYONE got. Sum them."
+    return sum(len(set(cat(group))) for group in groups)
+
+
+def day6_2(groups: List[List[str]]):
+    "For each group, compute the number of letters that EVERYONE got. Sum them."
+    return sum(len(set.intersection(*map(set, group)))
+               for group in groups)
+

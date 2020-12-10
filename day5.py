@@ -2,11 +2,6 @@ import operator
 from functools import reduce
 
 
-# just convert to binary number
-def alternate(seat_info):
-    return int('1010101', 2)
-
-
 def get_column_number(column_info):
     high = 7
     low = 0
@@ -67,3 +62,16 @@ if __name__ == '__main__':
         print(result)
         result = solve_part_2(data)
         print(result)
+
+
+# Other's solution
+# -- ------------------------------------------------------------------------
+def seat_id(seat: str, table=str.maketrans('FLBR', '0011')) -> int:
+    "Treat a seat description as a binary number; convert to int."
+    return int(seat.translate(table), base=2)
+
+
+def day5_2(ids):
+    "Find the one missing seat id."
+    [missing] = set(range(min(ids), max(ids))) - set(ids)
+    return missing

@@ -1,3 +1,8 @@
+from itertools import combinations
+
+from common import first
+
+
 def two_numbers_with_sum(numbers: list, required_sum: int) -> tuple:
     sorted_numbers = sorted(numbers)
     i = 0
@@ -40,3 +45,25 @@ if __name__ == '__main__':
         print(result)
         result = solve_part_2(numbers)
         print(result)
+
+
+# -------------------------------------------------------
+# Other's solution
+
+def day1_1(nums: set[int]):
+    "Find 2 distinct numbers that sum to 2020, and return their product."
+    return first(x * y for x in nums
+                 for y in nums & {2020 - x}
+                 if x != y)
+
+
+def day1_2(nums: set[int]):
+    "Find 3 distinct numbers that sum to 2020, and return their product."
+    return first(x * y * z for x, y in combinations(nums, 2)
+                 for z in nums & {2020 - x - y}
+                 if x != z != y)
+
+
+# Could the first one be written as ?
+def day1_1_my(nums):
+    return first(x * y for x, y in combinations(nums, 2) if x + y == 2020)

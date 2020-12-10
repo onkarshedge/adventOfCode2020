@@ -57,3 +57,11 @@ if __name__ == '__main__':
         print(result)
         result = solve_part_2(data)
         print(result)
+
+
+# Other's solution
+# -----------------------------------------------------------------------------------
+def valid_password_2(line) -> bool:
+    "Does line's pw have letter L at position a or b (1-based), but not both?"
+    a, b, L, pw = line
+    return (L == pw[a-1]) ^ (L == pw[b-1])
